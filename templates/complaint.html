@@ -1,0 +1,77 @@
+
+{% extends "base.html" %}
+{% block title %}Complaint | Matrukha{% endblock %}
+
+{% block content %}
+
+<section class="page-banner">
+    <div class="container">
+        <h1 data-en="Public Grievance" data-hi="जन शिकायत">Public Grievance</h1>
+        <p data-en="Share your village-related problems"
+           data-hi="गांव से संबंधित अपनी समस्याएं बताएं">
+            Share your village-related problems
+        </p>
+    </div>
+</section>
+
+<section class="container py-5">
+    <div class="form-container">
+
+        <h2 data-en="Submit Your Complaint" data-hi="अपनी शिकायत दर्ज करें">
+            Submit Your Complaint
+        </h2>
+
+        <p data-en="Please provide correct information."
+           data-hi="कृपया सही जानकारी भरें।">
+            Please provide correct information.
+        </p>
+
+        <form method="POST">
+
+            <div class="mb-3">
+                <label class="form-label" data-en="Full Name" data-hi="पूरा नाम">Full Name</label>
+                <input type="text" name="name" class="form-control"
+                       data-en-placeholder="Enter your name"
+                       data-hi-placeholder="अपना नाम लिखें"
+                       placeholder="Enter your name" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" data-en="Mobile Number" data-hi="मोबाइल नंबर">Mobile Number</label>
+                <input type="tel" name="phone" class="form-control"
+                       data-en-placeholder="Enter mobile number"
+                       data-hi-placeholder="मोबाइल नंबर लिखें"
+                       placeholder="Enter mobile number" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" data-en="Complaint Subject" data-hi="शिकायत का विषय">Complaint Subject</label>
+                <select name="subject" class="form-select" required>
+                    <option value="" data-en="Select Subject" data-hi="विषय चुनें">Select Subject</option>
+                    <option value="Road Problem" data-en="Road Problem" data-hi="सड़क की समस्या">Road Problem</option>
+                    <option value="Water Problem" data-en="Water Problem" data-hi="पानी की समस्या">Water Problem</option>
+                    <option value="Electricity Problem" data-en="Electricity Problem" data-hi="बिजली की समस्या">Electricity Problem</option>
+                    <option value="Sanitation Problem" data-en="Sanitation Problem" data-hi="सफाई की समस्या">Sanitation Problem</option>
+                    <option value="Government Scheme" data-en="Government Scheme" data-hi="सरकारी योजना">Government Scheme</option>
+                    <option value="Other" data-en="Other" data-hi="अन्य">Other</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" data-en="Complaint Details" data-hi="शिकायत का विवरण">Complaint Details</label>
+                <textarea name="message" class="form-control" rows="5"
+                          data-en-placeholder="Describe your problem"
+                          data-hi-placeholder="अपनी समस्या का विवरण लिखें"
+                          placeholder="Describe your problem" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-success btn-lg"
+                    data-en="Submit Complaint" data-hi="शिकायत जमा करें">
+                Submit Complaint
+            </button>
+
+        </form>
+    </div>
+</section>
+
+{% endblock %}

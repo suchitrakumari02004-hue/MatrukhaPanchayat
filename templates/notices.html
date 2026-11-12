@@ -1,0 +1,74 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="py-5" style="background:#f5f7fb; min-height:80vh;">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <h1 class="fw-bold">Notices & Announcements</h1>
+            <p class="text-muted">
+                Latest announcements from Gram Panchayat Matrukha
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            {% for notice in notices %}
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm border-0">
+
+                    <div class="card-body p-4">
+
+                        <span class="badge bg-primary mb-3">
+                            Official Notice
+                        </span>
+
+                        <h5 class="fw-bold">
+                            {{ notice.title }}
+                        </h5>
+
+                        <p class="text-muted mt-3">
+                            {{ notice.description }}
+                        </p>
+
+                        <hr>
+
+                        <small class="text-secondary">
+                            <i class="bi bi-calendar"></i>
+                            {{ notice.date }}
+                        </small>
+
+                    </div>
+
+                </div>
+            </div>
+
+            {% else %}
+
+            <div class="col-12 text-center">
+                <div class="card border-0 shadow-sm p-5">
+                    <h4>No Notices Available</h4>
+                    <p class="text-muted">
+                        New announcements will appear here.
+                    </p>
+                </div>
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="{{ url_for('home') }}"
+               class="btn btn-primary">
+                Back to Home
+            </a>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

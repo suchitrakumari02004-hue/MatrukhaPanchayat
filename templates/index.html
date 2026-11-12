@@ -1,0 +1,175 @@
+
+{% extends "base.html" %}
+{% block title %}Home | Gram Panchayat Matrukha{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <div class="container hero-content">
+
+        <span class="hero-label"
+              data-en="WELCOME TO OUR PANCHAYAT"
+              data-hi="हमारी पंचायत में आपका स्वागत है">
+            WELCOME TO OUR PANCHAYAT
+        </span>
+
+        <h1>
+            <span data-en="Welcome to Gram Panchayat"
+                  data-hi="ग्राम पंचायत">Welcome to Gram Panchayat</span>
+            <span>Matrukha</span>
+        </h1>
+
+        <p data-en="Connecting our village with digital services, public information and transparent administration."
+           data-hi="डिजिटल सेवाओं, सार्वजनिक जानकारी और पारदर्शी प्रशासन के माध्यम से हमारे गांव को जोड़ना।">
+            Connecting our village with digital services.
+        </p>
+
+        <div class="mt-4">
+            <a href="{{ url_for('services') }}" class="btn btn-success btn-lg"
+               data-en="Explore Services" data-hi="सेवाएं देखें">
+                Explore Services
+            </a>
+
+            <a href="{{ url_for('about') }}" class="btn btn-outline-light btn-lg ms-2"
+               data-en="Know More" data-hi="और जानें">
+                Know More
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<section class="container py-5">
+
+    <div class="section-heading">
+        <span data-en="OUR SERVICES" data-hi="हमारी सेवाएं">OUR SERVICES</span>
+        <h2 data-en="Services for Citizens" data-hi="नागरिकों के लिए सेवाएं">Services for Citizens</h2>
+        <p data-en="Important information and public services in one place."
+           data-hi="महत्वपूर्ण जानकारी और सार्वजनिक सेवाएं एक ही स्थान पर।">
+            Important information and public services in one place.
+        </p>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="service-card">
+                <i class="bi bi-file-earmark-text"></i>
+                <h4 data-en="Certificates" data-hi="प्रमाण पत्र">Certificates</h4>
+                <p data-en="Information about birth, death and other certificates."
+                   data-hi="जन्म, मृत्यु और अन्य प्रमाण पत्रों की जानकारी।">
+                    Information about certificates.
+                </p>
+                <a href="{{ url_for('services') }}" data-en="Learn More →" data-hi="और जानें →">Learn More →</a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="service-card">
+                <i class="bi bi-house-heart"></i>
+                <h4 data-en="Government Schemes" data-hi="सरकारी योजनाएं">Government Schemes</h4>
+                <p data-en="Information about welfare and development schemes."
+                   data-hi="कल्याण और विकास योजनाओं की जानकारी।">
+                    Information about government schemes.
+                </p>
+                <a href="{{ url_for('services') }}" data-en="Learn More →" data-hi="और जानें →">Learn More →</a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="service-card">
+                <i class="bi bi-chat-left-text"></i>
+                <h4 data-en="Public Complaints" data-hi="जन शिकायतें">Public Complaints</h4>
+                <p data-en="Submit your local issues through our online form."
+                   data-hi="हमारे ऑनलाइन फॉर्म के माध्यम से अपनी समस्याएं दर्ज करें।">
+                    Submit your local issues.
+                </p>
+                <a href="{{ url_for('complaint') }}" data-en="Submit Complaint →" data-hi="शिकायत दर्ज करें →">Submit Complaint →</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="village-section py-5">
+    <div class="container">
+        <div class="row align-items-center g-4">
+
+            <div class="col-md-6">
+                <span class="green-label" data-en="ABOUT OUR VILLAGE" data-hi="हमारे गांव के बारे में">ABOUT OUR VILLAGE</span>
+
+                <h2 data-en="Building a Better Matrukha"
+                    data-hi="एक बेहतर मटरूखा का निर्माण">
+                    Building a Better Matrukha
+                </h2>
+
+                <p data-en="Our Panchayat works towards accessible information and village development."
+                   data-hi="हमारी पंचायत सुलभ जानकारी और गांव के विकास की दिशा में काम करने का लक्ष्य रखती है।">
+                    Our Panchayat works towards village development.
+                </p>
+
+                <a href="{{ url_for('about') }}" class="btn btn-success"
+                   data-en="Read About Us" data-hi="हमारे बारे में पढ़ें">
+                    Read About Us
+                </a>
+            </div>
+
+            <div class="col-md-6">
+                <img class="village-image"
+                     src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1000"
+                     alt="Village landscape">
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="container py-5">
+    <div class="section-heading">
+        <span data-en="LEADERSHIP" data-hi="नेतृत्व">LEADERSHIP</span>
+        <h2 data-en="Our Mukhiya" data-hi="हमारे मुखिया">Our Mukhiya</h2>
+    </div>
+
+    <div class="info-card text-center">
+        <i class="bi bi-person-circle"></i>
+        <h3>श्री रविन्द्र कुमार</h3>
+        <h5>Shri Ravindra Kumar</h5>
+        <span class="badge bg-success"
+              data-en="Mukhiya" data-hi="मुखिया">Mukhiya</span>
+        <p class="mt-3"
+           data-en="Gram Panchayat Matrukha"
+           data-hi="ग्राम पंचायत मटरूखा">
+            Gram Panchayat Matrukha
+        </p>
+    </div>
+</section>
+
+<section class="container py-5">
+    <div class="section-heading">
+        <span data-en="LATEST UPDATES" data-hi="ताजा अपडेट">LATEST UPDATES</span>
+        <h2 data-en="Latest Notices" data-hi="ताजा सूचनाएं">Latest Notices</h2>
+    </div>
+
+    <div class="row g-3">
+        {% for notice in notices %}
+        <div class="col-md-4">
+            <div class="notice-card">
+                <span class="notice-date">{{ notice.date }}</span>
+                <h5>{{ notice.title }}</h5>
+                <p>{{ notice.description }}</p>
+            </div>
+        </div>
+        {% else %}
+        <p data-en="No notices available." data-hi="कोई सूचना उपलब्ध नहीं है।">No notices available.</p>
+        {% endfor %}
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{{ url_for('notices') }}" class="btn btn-outline-success"
+           data-en="View All Notices" data-hi="सभी सूचनाएं देखें">
+            View All Notices
+        </a>
+    </div>
+</section>
+
+{% endblock %}

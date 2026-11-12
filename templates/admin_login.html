@@ -1,0 +1,42 @@
+
+{% extends "base.html" %}
+{% block title %}Admin Login | Matrukha{% endblock %}
+
+{% block content %}
+
+<section class="container py-5">
+    <div class="form-container login-container">
+
+        <div class="text-center mb-4">
+            <i class="bi bi-shield-lock login-icon"></i>
+
+            <h2 data-en="Admin Login" data-hi="एडमिन लॉगिन">Admin Login</h2>
+
+            <p data-en="Login to manage the Panchayat website"
+               data-hi="पंचायत वेबसाइट को प्रबंधित करने के लिए लॉगिन करें">
+                Login to manage the Panchayat website
+            </p>
+        </div>
+
+        <form method="POST">
+
+            <div class="mb-3">
+                <label class="form-label" data-en="Username" data-hi="यूजरनेम">Username</label>
+                <input type="text" name="username" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" data-en="Password" data-hi="पासवर्ड">Password</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100"
+                    data-en="Login" data-hi="लॉगिन करें">
+                Login
+            </button>
+
+        </form>
+    </div>
+</section>
+
+{% endblock %}

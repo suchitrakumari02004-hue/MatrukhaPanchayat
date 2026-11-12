@@ -1,0 +1,671 @@
+
+{% extends "base.html" %}
+
+{% block title %}About Us | Gram Panchayat Matrukha{% endblock %}
+
+{% block content %}
+
+<style>
+.about-page {
+    background: #f5f8f6;
+    color: #263b31;
+    overflow: hidden;
+}
+
+.about-hero {
+    background: linear-gradient(135deg, #075b3b, #168b57);
+    color: white;
+    padding: 85px 20px;
+    text-align: center;
+    position: relative;
+}
+
+.about-hero h1 {
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 18px;
+}
+
+.about-hero p {
+    max-width: 750px;
+    margin: auto;
+    font-size: 19px;
+    line-height: 1.8;
+    color: #e7f5ed;
+}
+
+.about-badge {
+    display: inline-block;
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.3);
+    padding: 9px 20px;
+    border-radius: 30px;
+    margin-bottom: 22px;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 65px 20px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title h2 {
+    font-size: 34px;
+    color: #075b3b;
+    font-weight: 800;
+    margin-bottom: 14px;
+}
+
+.section-line {
+    width: 75px;
+    height: 5px;
+    background: #168b57;
+    border-radius: 10px;
+    margin: auto;
+}
+
+.about-intro {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 35px;
+    align-items: center;
+}
+
+.intro-content {
+    background: white;
+    padding: 35px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.05);
+}
+
+.intro-content h3 {
+    color: #075b3b;
+    font-size: 26px;
+    font-weight: 750;
+    margin-bottom: 18px;
+}
+
+.intro-content p {
+    color: #64756b;
+    line-height: 1.9;
+    font-size: 16px;
+}
+
+.intro-highlight {
+    background: #e5f3eb;
+    padding: 35px;
+    border-radius: 18px;
+    text-align: center;
+    border-bottom: 5px solid #168b57;
+}
+
+.intro-highlight i {
+    font-size: 65px;
+    color: #168b57;
+}
+
+.intro-highlight h3 {
+    color: #075b3b;
+    font-weight: 800;
+    margin: 20px 0 12px;
+}
+
+.intro-highlight p {
+    color: #536d5e;
+    line-height: 1.8;
+}
+
+.vision-section {
+    background: white;
+    padding: 65px 20px;
+}
+
+.vision-grid {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.vision-card {
+    padding: 35px;
+    background: #f5f8f6;
+    border-radius: 18px;
+    border-left: 5px solid #168b57;
+    box-shadow: 0 6px 20px rgba(0,0,0,.04);
+}
+
+.vision-card i {
+    font-size: 38px;
+    color: #168b57;
+}
+
+.vision-card h3 {
+    color: #075b3b;
+    font-size: 25px;
+    font-weight: 750;
+    margin: 18px 0 12px;
+}
+
+.vision-card p {
+    color: #64756b;
+    line-height: 1.9;
+    margin: 0;
+}
+
+.mission-section {
+    padding: 65px 20px;
+}
+
+.mission-list {
+    max-width: 900px;
+    margin: auto;
+    display: grid;
+    gap: 18px;
+}
+
+.mission-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    background: white;
+    padding: 22px;
+    border-radius: 14px;
+    box-shadow: 0 5px 18px rgba(0,0,0,.04);
+}
+
+.mission-item i {
+    color: #168b57;
+    font-size: 25px;
+    flex-shrink: 0;
+}
+
+.mission-item p {
+    margin: 0;
+    line-height: 1.7;
+    color: #455b4d;
+    font-size: 16px;
+}
+
+.services-section {
+    background: white;
+    padding: 65px 20px;
+}
+
+.services-grid {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.service-card {
+    padding: 30px 22px;
+    border: 1px solid #e2eee6;
+    border-radius: 17px;
+    text-align: center;
+    transition: .3s;
+    background: #fff;
+}
+
+.service-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 12px 25px rgba(0,0,0,.08);
+    border-color: #168b57;
+}
+
+.service-card i {
+    font-size: 42px;
+    color: #168b57;
+}
+
+.service-card h4 {
+    color: #075b3b;
+    font-size: 19px;
+    font-weight: 750;
+    margin: 17px 0 10px;
+}
+
+.service-card p {
+    color: #718076;
+    line-height: 1.7;
+    font-size: 14px;
+    margin: 0;
+}
+
+.commitment-section {
+    background: linear-gradient(135deg, #075b3b, #168b57);
+    color: white;
+    text-align: center;
+    padding: 75px 20px;
+}
+
+.commitment-section h2 {
+    font-size: 35px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.commitment-section p {
+    max-width: 850px;
+    margin: auto;
+    color: #e4f4e9;
+    line-height: 1.9;
+    font-size: 17px;
+}
+
+.commitment-quote {
+    font-size: 23px;
+    font-weight: 750;
+    margin-top: 30px;
+    color: white;
+}
+
+.about-disclaimer {
+    text-align: center;
+    padding: 20px;
+    color: #718076;
+    font-size: 13px;
+}
+
+@media(max-width: 768px) {
+    .about-hero {
+        padding: 60px 18px;
+    }
+
+    .about-hero h1 {
+        font-size: 32px;
+    }
+
+    .about-hero p {
+        font-size: 16px;
+    }
+
+    .about-intro,
+    .vision-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .section-title h2 {
+        font-size: 27px;
+    }
+
+    .commitment-section h2 {
+        font-size: 28px;
+    }
+}
+
+@media(max-width: 480px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .intro-content,
+    .intro-highlight,
+    .vision-card {
+        padding: 25px;
+    }
+}
+</style>
+
+<div class="about-page">
+
+    <!-- HERO SECTION -->
+
+    <section class="about-hero">
+
+        <div class="about-badge"
+             data-en="WELCOME TO OUR DIGITAL PORTAL"
+             data-hi="हमारे डिजिटल पोर्टल में आपका स्वागत है">
+            WELCOME TO OUR DIGITAL PORTAL
+        </div>
+
+        <h1 data-en="About Gram Panchayat Matrukha"
+            data-hi="ग्राम पंचायत मटरूखा के बारे में">
+            About Gram Panchayat Matrukha
+        </h1>
+
+        <p data-en="Building a Better Village Through Digital Governance"
+           data-hi="डिजिटल सुशासन के माध्यम से बेहतर गांव का निर्माण">
+            Building a Better Village Through Digital Governance
+        </p>
+
+    </section>
+
+
+    <!-- ABOUT INTRODUCTION -->
+
+    <section class="about-container">
+
+        <div class="section-title">
+            <h2 data-en="Who We Are"
+                data-hi="हम कौन हैं">
+                Who We Are
+            </h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="about-intro">
+
+            <div class="intro-content">
+
+                <h3 data-en="Welcome to Gram Panchayat Matrukha"
+                    data-hi="ग्राम पंचायत मटरूखा में आपका स्वागत है">
+                    Welcome to Gram Panchayat Matrukha
+                </h3>
+
+                <p data-en="Gram Panchayat Matrukha is committed to promoting village development, transparency, public awareness and accessible citizen services. Our vision is to create a well-informed, connected and progressive community where every citizen can access important information and stay connected with Panchayat activities."
+                   data-hi="ग्राम पंचायत मटरूखा गांव के विकास, पारदर्शिता, जन-जागरूकता और नागरिक सुविधाओं को बढ़ावा देने के लिए प्रतिबद्ध है। हमारा उद्देश्य एक जागरूक, जुड़ा हुआ और प्रगतिशील समुदाय बनाना है, जहां प्रत्येक नागरिक महत्वपूर्ण जानकारी प्राप्त कर सके और पंचायत की गतिविधियों से जुड़ा रहे।">
+                    Gram Panchayat Matrukha is committed to promoting
+                    village development, transparency, public awareness
+                    and accessible citizen services.
+                </p>
+
+                <p data-en="Our digital information portal is designed to make Panchayat-related information and services more accessible, convenient and transparent. Residents can explore public notices, government scheme information, development projects, important documents and complaint services."
+                   data-hi="हमारा डिजिटल सूचना पोर्टल पंचायत से संबंधित जानकारी और सेवाओं को अधिक सुलभ, सुविधाजनक और पारदर्शी बनाने के लिए तैयार किया गया है। नागरिक सार्वजनिक सूचनाएं, सरकारी योजनाओं की जानकारी, विकास परियोजनाएं, महत्वपूर्ण दस्तावेज और शिकायत सेवाएं देख सकते हैं।">
+                    Our digital information portal is designed to make
+                    Panchayat-related information and services more
+                    accessible, convenient and transparent.
+                </p>
+
+            </div>
+
+            <div class="intro-highlight">
+
+                <i class="bi bi-buildings-fill"></i>
+
+                <h3 data-en="A Connected Village"
+                    data-hi="एक जुड़ा हुआ गांव">
+                    A Connected Village
+                </h3>
+
+                <p data-en="Connecting citizens with information, digital services and opportunities for community development."
+                   data-hi="नागरिकों को जानकारी, डिजिटल सेवाओं और सामुदायिक विकास के अवसरों से जोड़ना।">
+                    Connecting citizens with information, digital
+                    services and opportunities for community development.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- VISION AND MISSION -->
+
+    <section class="vision-section">
+
+        <div class="section-title">
+            <h2 data-en="Our Vision & Mission"
+                data-hi="हमारा दृष्टिकोण एवं मिशन">
+                Our Vision & Mission
+            </h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="vision-grid">
+
+            <div class="vision-card">
+
+                <i class="bi bi-eye-fill"></i>
+
+                <h3 data-en="Our Vision"
+                    data-hi="हमारा दृष्टिकोण">
+                    Our Vision
+                </h3>
+
+                <p data-en="To build a digitally empowered, clean, developed and self-reliant village where technology supports better governance and improves the quality of life for every resident."
+                   data-hi="एक डिजिटल रूप से सशक्त, स्वच्छ, विकसित और आत्मनिर्भर गांव का निर्माण करना, जहां तकनीक बेहतर प्रशासन और प्रत्येक नागरिक के जीवन स्तर को बेहतर बनाने में सहयोग करे।">
+                    To build a digitally empowered, clean, developed
+                    and self-reliant village.
+                </p>
+
+            </div>
+
+            <div class="vision-card">
+
+                <i class="bi bi-bullseye"></i>
+
+                <h3 data-en="Our Mission"
+                    data-hi="हमारा मिशन">
+                    Our Mission
+                </h3>
+
+                <p data-en="To promote transparency, citizen participation, digital awareness and convenient access to Panchayat information and public services."
+                   data-hi="पारदर्शिता, नागरिक भागीदारी, डिजिटल जागरूकता और पंचायत की जानकारी एवं सार्वजनिक सेवाओं तक सुविधाजनक पहुंच को बढ़ावा देना।">
+                    To promote transparency, citizen participation,
+                    digital awareness and convenient access to public services.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MISSION POINTS -->
+
+    <section class="mission-section">
+
+        <div class="section-title">
+
+            <h2 data-en="Our Core Objectives"
+                data-hi="हमारे प्रमुख उद्देश्य">
+                Our Core Objectives
+            </h2>
+
+            <div class="section-line"></div>
+
+        </div>
+
+        <div class="mission-list">
+
+            <div class="mission-item">
+                <i class="bi bi-check-circle-fill"></i>
+                <p data-en="Promote transparency and accountability in local administration."
+                   data-hi="स्थानीय प्रशासन में पारदर्शिता और जवाबदेही को बढ़ावा देना।">
+                    Promote transparency and accountability in local administration.
+                </p>
+            </div>
+
+            <div class="mission-item">
+                <i class="bi bi-check-circle-fill"></i>
+                <p data-en="Make important Panchayat information easily accessible to citizens."
+                   data-hi="पंचायत की महत्वपूर्ण जानकारी नागरिकों तक आसानी से पहुंचाना।">
+                    Make important Panchayat information easily accessible to citizens.
+                </p>
+            </div>
+
+            <div class="mission-item">
+                <i class="bi bi-check-circle-fill"></i>
+                <p data-en="Encourage active citizen participation in village development."
+                   data-hi="गांव के विकास में नागरिकों की सक्रिय भागीदारी को प्रोत्साहित करना।">
+                    Encourage active citizen participation in village development.
+                </p>
+            </div>
+
+            <div class="mission-item">
+                <i class="bi bi-check-circle-fill"></i>
+                <p data-en="Spread awareness about government schemes and public welfare services."
+                   data-hi="सरकारी योजनाओं और जनकल्याणकारी सेवाओं के प्रति जागरूकता फैलाना।">
+                    Spread awareness about government schemes and public welfare services.
+                </p>
+            </div>
+
+            <div class="mission-item">
+                <i class="bi bi-check-circle-fill"></i>
+                <p data-en="Provide a convenient platform for citizens to submit complaints and suggestions."
+                   data-hi="नागरिकों को शिकायत और सुझाव देने के लिए सुविधाजनक मंच उपलब्ध कराना।">
+                    Provide a convenient platform for citizens to submit complaints and suggestions.
+                </p>
+            </div>
+
+            <div class="mission-item">
+                <i class="bi bi-check-circle-fill"></i>
+                <p data-en="Promote digital awareness and community development."
+                   data-hi="डिजिटल जागरूकता और सामुदायिक विकास को बढ़ावा देना।">
+                    Promote digital awareness and community development.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- DIGITAL SERVICES -->
+
+    <section class="services-section">
+
+        <div class="section-title">
+
+            <h2 data-en="Our Digital Services"
+                data-hi="हमारी डिजिटल सुविधाएं">
+                Our Digital Services
+            </h2>
+
+            <div class="section-line"></div>
+
+        </div>
+
+        <div class="services-grid">
+
+            <div class="service-card">
+                <i class="bi bi-megaphone-fill"></i>
+
+                <h4 data-en="Public Notices"
+                    data-hi="सार्वजनिक सूचनाएं">
+                    Public Notices
+                </h4>
+
+                <p data-en="Stay updated with important Panchayat announcements and public information."
+                   data-hi="पंचायत की महत्वपूर्ण घोषणाओं और सार्वजनिक सूचनाओं से अपडेट रहें।">
+                    Stay updated with important Panchayat announcements.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <i class="bi bi-bank2"></i>
+
+                <h4 data-en="Government Schemes"
+                    data-hi="सरकारी योजनाएं">
+                    Government Schemes
+                </h4>
+
+                <p data-en="Explore general information about government welfare schemes and public services."
+                   data-hi="सरकारी कल्याणकारी योजनाओं और सार्वजनिक सेवाओं की सामान्य जानकारी प्राप्त करें।">
+                    Explore information about government welfare schemes.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <i class="bi bi-cone-striped"></i>
+
+                <h4 data-en="Development Projects"
+                    data-hi="विकास परियोजनाएं">
+                    Development Projects
+                </h4>
+
+                <p data-en="Explore information and updates about village development activities."
+                   data-hi="गांव की विकास गतिविधियों की जानकारी और अपडेट देखें।">
+                    Explore information about village development activities.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <i class="bi bi-file-earmark-text-fill"></i>
+
+                <h4 data-en="Document Centre"
+                    data-hi="दस्तावेज केंद्र">
+                    Document Centre
+                </h4>
+
+                <p data-en="Access useful public documents and available downloadable resources."
+                   data-hi="उपलब्ध सार्वजनिक दस्तावेजों और डाउनलोड करने योग्य संसाधनों तक पहुंचें।">
+                    Access useful public documents and resources.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <i class="bi bi-chat-left-text-fill"></i>
+
+                <h4 data-en="Complaint Portal"
+                    data-hi="शिकायत पोर्टल">
+                    Complaint Portal
+                </h4>
+
+                <p data-en="Submit your complaints, concerns and suggestions through the online platform."
+                   data-hi="ऑनलाइन प्लेटफॉर्म के माध्यम से अपनी शिकायतें और सुझाव दर्ज करें।">
+                    Submit your complaints and suggestions online.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <i class="bi bi-robot"></i>
+
+                <h4 data-en="AI Assistant"
+                    data-hi="AI सहायक">
+                    AI Assistant
+                </h4>
+
+                <p data-en="Get general guidance and information about Panchayat services through our AI assistant."
+                   data-hi="हमारे AI सहायक के माध्यम से पंचायत सेवाओं के बारे में सामान्य मार्गदर्शन और जानकारी प्राप्त करें।">
+                    Get general guidance about Panchayat services.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- COMMITMENT -->
+
+    <section class="commitment-section">
+
+        <h2 data-en="Our Commitment to the Community"
+            data-hi="समुदाय के प्रति हमारा संकल्प">
+            Our Commitment to the Community
+        </h2>
+
+        <p data-en="We believe that village development begins with informed citizens, transparent administration and active community participation. Through digital access and shared responsibility, we aim to support a more connected, aware and progressive Matrukha."
+           data-hi="हमारा मानना है कि गांव का वास्तविक विकास जागरूक नागरिकों, पारदर्शी प्रशासन और सक्रिय सामुदायिक भागीदारी से शुरू होता है। डिजिटल सुविधाओं और साझा जिम्मेदारी के माध्यम से हम एक अधिक जागरूक, जुड़ा हुआ और प्रगतिशील मटरूखा बनाने का प्रयास करते हैं।">
+            We believe that village development begins with informed
+            citizens, transparent administration and active community
+            participation.
+        </p>
+
+        <div class="commitment-quote"
+             data-en="Together for Transparency, Development and a Better Tomorrow."
+             data-hi="पारदर्शिता, विकास और बेहतर भविष्य के लिए एक साथ।">
+            Together for Transparency, Development and a Better Tomorrow.
+        </div>
+
+    </section>
+
+
+    <div class="about-disclaimer"
+         data-en="This is an independent digital information and demonstration portal, not an official government website."
+         data-hi="यह एक स्वतंत्र डिजिटल सूचना एवं प्रदर्शन पोर्टल है, आधिकारिक सरकारी वेबसाइट नहीं।">
+        This is an independent digital information and demonstration portal,
+        not an official government website.
+    </div>
+
+</div>
+
+{% endblock %}

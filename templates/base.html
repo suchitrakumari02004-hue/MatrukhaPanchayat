@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Gram Panchayat Matrukha{% endblock %}</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="top-strip">
+    <div class="container d-flex justify-content-between flex-wrap">
+        <span data-en="Gram Panchayat Matrukha" data-hi="ग्राम पंचायत मटरूखा">Gram Panchayat Matrukha</span>
+        <span data-en="Public Information Portal" data-hi="जन सूचना पोर्टल">Public Information Portal</span>
+    </div>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-dark main-nav sticky-top">
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="{{ url_for('home') }}">
+            <i class="bi bi-buildings"></i>
+            <span data-en="MATRUKHA PANCHAYAT" data-hi="मटरूखा पंचायत">MATRUKHA PANCHAYAT</span>
+        </a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMenu">
+
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('admin_login') }}">
+                <i class="bi bi-person-lock"></i> Admin Login
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('home') }}"
+                       data-en="Home" data-hi="होम">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('about') }}"
+                       data-en="About" data-hi="हमारे बारे में">About</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('services') }}"
+                       data-en="Services" data-hi="सेवाएं">Services</a>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="{{ url_for('panchayat_team') }}"
+                       data-en="Panchayat Officials"
+                       data-hi="पंचायत पदाधिकारी">
+                        Panchayat Officials
+                     </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('notices') }}"
+                       data-en="Notices" data-hi="सूचनाएं">Notices</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('complaint') }}"
+                       data-en="Complaints" data-hi="शिकायत">Complaints</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('contact') }}"
+                       data-en="Contact" data-hi="संपर्क">Contact</a>
+                </li>
+
+                <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                    <div class="language-switch">
+                        <button type="button" id="englishBtn"
+                                onclick="changeLanguage('en')">English</button>
+                        <button type="button" id="hindiBtn"
+                                onclick="changeLanguage('hi')">हिन्दी</button>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<div class="container mt-3">
+    {% for category, message in messages %}
+    <div class="alert alert-{{ category }} alert-dismissible fade show">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endwith %}
+
+{% block content %}{% endblock %}
+
+<footer class="footer mt-5">
+    <div class="container py-4">
+        <div class="row g-4">
+
+            <div class="col-md-6">
+                <h4 data-en="Gram Panchayat Matrukha"
+                    data-hi="ग्राम पंचायत मटरूखा">Gram Panchayat Muturkha</h4>
+
+                <p data-en="Connecting our village with digital services and transparent administration."
+                   data-hi="डिजिटल सेवाओं और पारदर्शी प्रशासन के माध्यम से हमारे गांव को जोड़ना।">
+                    Connecting our village with digital services.
+                </p>
+
+                <p>
+                    <strong data-en="Mukhiya: Shri Ravindra Kumar"
+                            data-hi="मुखिया: श्री रविन्द्र कुमार">
+                        Mukhiya: Shri Ravindra Kumar
+                    </strong>
+                </p>
+            </div>
+
+            <div class="col-md-3">
+                <h5 data-en="Quick Links" data-hi="महत्वपूर्ण लिंक">Quick Links</h5>
+                <a href="{{ url_for('about') }}" data-en="About Us" data-hi="हमारे बारे में">About Us</a>
+                <a href="{{ url_for('services') }}" data-en="Services" data-hi="सेवाएं">Services</a>
+                <a href="{{ url_for('notices') }}" data-en="Notices" data-hi="सूचनाएं">Notices</a>
+            </div>
+
+            <div class="col-md-3">
+                <h5 data-en="Administration" data-hi="प्रशासन">Administration</h5>
+                <a href="{{ url_for('admin_login') }}" data-en="Admin Login" data-hi="एडमिन लॉगिन">Admin Login</a>
+                <a href="{{ url_for('contact') }}" data-en="Contact" data-hi="संपर्क">Contact</a>
+            </div>
+
+        </div>
+
+        <hr>
+
+        <p class="text-center mb-0"
+           data-en="© 2026 Gram Panchayat Matrukha. All rights reserved."
+           data-hi="© 2026 ग्राम पंचायत मटरूखा। सर्वाधिकार सुरक्षित।">
+            © 2026 Gram Panchayat Matrukha.
+        </p>
+
+        <p class="text-center small mt-2"
+           data-en="Independent demonstration website, not an official government portal."
+           data-hi="यह एक स्वतंत्र प्रदर्शन वेबसाइट है, आधिकारिक सरकारी पोर्टल नहीं।">
+            Independent demonstration website.
+        </p>
+    </div>
+</footer>
+
+<div class="chat-widget">
+    <button class="chat-toggle" id="chatToggle">
+        <i class="bi bi-robot"></i>
+        <span data-en="Ask AI" data-hi="AI से पूछें">Ask AI</span>
+    </button>
+
+    <div class="chat-box" id="chatBox">
+
+        <div class="chat-header">
+            <span data-en="Panchayat AI Assistant"
+                  data-hi="पंचायत AI सहायक">Panchayat AI Assistant</span>
+            <button id="chatClose">×</button>
+        </div>
+
+        <div class="chat-body" id="chatBody">
+            <div class="bot-message"
+                 data-en="Hello! How can I help you?"
+                 data-hi="नमस्ते! मैं आपकी क्या सहायता कर सकता हूँ?">
+                Hello! How can I help you?
+            </div>
+        </div>
+
+        <form id="chatForm" class="chat-input">
+            <input id="chatMessage" type="text"
+                   data-en-placeholder="Ask your question..."
+                   data-hi-placeholder="अपना सवाल पूछें..."
+                   placeholder="Ask your question..." required>
+
+            <button type="submit"><i class="bi bi-send-fill"></i></button>
+        </form>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

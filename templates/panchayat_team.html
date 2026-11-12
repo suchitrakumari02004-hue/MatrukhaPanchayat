@@ -1,0 +1,169 @@
+
+{% extends "base.html" %}
+
+{% block title %}Panchayat Officials and Staff{% endblock %}
+
+{% block content %}
+
+<style>
+.team-page {
+    background: #f3f8f5;
+    min-height: 100vh;
+    padding: 45px 5% 70px;
+}
+
+.team-heading {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.team-heading h1 {
+    color: #075b3b;
+    font-size: 40px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.heading-line {
+    width: 95px;
+    height: 5px;
+    background: #168b57;
+    border-radius: 10px;
+    margin: 0 auto 18px;
+}
+
+.team-heading p {
+    color: #718096;
+    font-size: 19px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+    max-width: 1450px;
+    margin: auto;
+}
+
+.team-card {
+    background: #fff;
+    border: 1px solid #e1ebe4;
+    border-bottom: 5px solid #168b57;
+    border-radius: 21px;
+    min-height: 230px;
+    padding: 35px 20px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,.06);
+    transition: .3s;
+}
+
+.team-card:hover {
+    transform: translateY(-6px);
+}
+
+.member-icon {
+    width: 72px;
+    height: 72px;
+    background: #e7f5ed;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+}
+
+.member-icon i {
+    font-size: 35px;
+    color: #168b57;
+}
+
+.team-card h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #123b2b;
+    margin-bottom: 10px;
+}
+
+.team-card p {
+    color: #168b57;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+
+@media (max-width: 992px) {
+    .team-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    .team-page {
+        padding: 30px 15px 50px;
+    }
+
+    .team-heading h1 {
+        font-size: 27px;
+    }
+
+    .team-heading p {
+        font-size: 16px;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<div class="team-page">
+
+    <div class="team-heading">
+
+        <h1
+            data-en="Panchayat Officials and Staff"
+            data-hi="पंचायत पदाधिकारी एवं कर्मचारी">
+            पंचायत पदाधिकारी एवं कर्मचारी
+        </h1>
+
+        <div class="heading-line"></div>
+
+        <p
+            data-en="List of officials and staff of Matruka Gram Panchayat"
+            data-hi="मटरूखा ग्राम पंचायत के पदाधिकारियों एवं कर्मचारियों की सूची">
+            मटरूखा ग्राम पंचायत के पदाधिकारियों एवं कर्मचारियों की सूची
+        </p>
+
+    </div>
+
+    <div class="team-grid">
+
+        {% for member in team %}
+
+        <div class="team-card">
+
+            <div class="member-icon">
+                <i class="bi bi-person-circle"></i>
+            </div>
+
+            <h3
+                data-en="{{ member.name_en }}"
+                data-hi="{{ member.name_hi }}">
+                {{ member.name_hi }}
+            </h3>
+
+            <p
+                data-en="{{ member.designation_en }}"
+                data-hi="{{ member.designation_hi }}">
+                {{ member.designation_hi }}
+            </p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

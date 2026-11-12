@@ -1,0 +1,121 @@
+
+{% extends "base.html" %}
+{% block title %}Contact | Matrukha{% endblock %}
+
+{% block content %}
+
+<section class="page-banner">
+    <div class="container">
+        <h1 data-en="Contact Us" data-hi="हमसे संपर्क करें">Contact Us</h1>
+        <p data-en="Get in touch with our Panchayat information portal"
+           data-hi="हमारे पंचायत सूचना पोर्टल से संपर्क करें">
+            Get in touch with our Panchayat information portal
+        </p>
+    </div>
+</section>
+
+<section class="contact-page-section">
+    <div class="container">
+        <div class="row g-4 align-items-stretch">
+
+            <!-- Left Information Cards -->
+            <div class="col-lg-5 col-md-5">
+
+                <div class="contact-info-card">
+                    <div class="contact-icon">
+                        <i class="bi bi-person-circle"></i>
+                    </div>
+
+                    <h4 data-en="Mukhiya" data-hi="मुखिया">Mukhiya</h4>
+                    <p data-en="Shri Ravindra Kumar"
+                       data-hi="श्री रविन्द्र कुमार">
+                        Shri Ravindra Kumar
+                    </p>
+                </div>
+
+                <div class="contact-info-card">
+                    <div class="contact-icon">
+                        <i class="bi bi-geo-alt"></i>
+                    </div>
+
+                    <h4 data-en="Address" data-hi="पता">Address</h4>
+
+                    <p data-en="Gram Panchayat Matrukha"
+                       data-hi="ग्राम पंचायत मटरूखा">
+                        Gram Panchayat Matrukha
+                    </p>
+
+                    <small data-en="Official district and block details to be verified."
+                           data-hi="आधिकारिक जिला और प्रखंड की जानकारी सत्यापित करके जोड़ें।">
+                        Official district and block details to be verified.
+                    </small>
+                </div>
+
+            </div>
+
+            <!-- Right Contact Form -->
+            <div class="col-lg-7 col-md-7">
+
+                <div class="contact-form-card">
+                    <h2 data-en="Send a Message"
+                        data-hi="संदेश भेजें">
+                        Send a Message
+                    </h2>
+
+                    <p class="contact-subtitle"
+                       data-en="Have a question? Send us your message."
+                       data-hi="कोई सवाल है? हमें अपना संदेश भेजें।">
+                        Have a question? Send us your message.
+                    </p>
+
+                    <form method="POST">
+
+                        <div class="mb-3">
+                            <label class="form-label"
+                                   data-en="Name" data-hi="नाम">Name</label>
+                            <input type="text" name="name"
+                                   class="form-control"
+                                   data-en-placeholder="Enter your name"
+                                   data-hi-placeholder="अपना नाम लिखें"
+                                   placeholder="Enter your name"
+                                   required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label"
+                                   data-en="Email" data-hi="ईमेल">Email</label>
+                            <input type="email" name="email"
+                                   class="form-control"
+                                   placeholder="example@email.com"
+                                   required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label"
+                                   data-en="Message" data-hi="संदेश">Message</label>
+                            <textarea name="message" rows="5"
+                                      class="form-control"
+                                      data-en-placeholder="Write your message"
+                                      data-hi-placeholder="अपना संदेश लिखें"
+                                      placeholder="Write your message"
+                                      required></textarea>
+                        </div>
+
+                        <button class="btn btn-success btn-lg"
+                                type="submit"
+                                data-en="Send Message"
+                                data-hi="संदेश भेजें">
+                            <i class="bi bi-send me-2"></i>
+                            Send Message
+                        </button>
+
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

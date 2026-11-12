@@ -1,0 +1,203 @@
+
+{% extends "base.html" %}
+{% block title %}Admin Dashboard | Matrukha{% endblock %}
+
+{% block content %}
+
+<section class="container py-5">
+
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
+        <div>
+            <h1 data-en="Admin Dashboard" data-hi="एडमिन डैशबोर्ड">Admin Dashboard</h1>
+            <p>
+                <span data-en="Welcome" data-hi="स्वागत है">Welcome</span>,
+                {{ session.admin }}
+            </p>
+        </div>
+
+        <a href="{{ url_for('admin_logout') }}" class="btn btn-danger"
+           data-en="Logout" data-hi="लॉगआउट">
+            Logout
+        </a>
+    </div>
+
+    <div class="row g-3 mb-5">
+
+        <div class="col-md-4">
+            <div class="dashboard-card">
+                <i class="bi bi-megaphone"></i>
+                <h2>{{ notice_count }}</h2>
+                <p data-en="Total Notices" data-hi="कुल सूचनाएं">Total Notices</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="dashboard-card">
+                <i class="bi bi-chat-left-text"></i>
+                <h2>{{ complaint_count }}</h2>
+                <p data-en="Total Complaints" data-hi="कुल शिकायतें">Total Complaints</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="dashboard-card">
+                <i class="bi bi-hourglass-split"></i>
+                <h2>{{ pending_count }}</h2>
+                <p data-en="Pending Complaints" data-hi="लंबित शिकायतें">Pending Complaints</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="form-container mb-5">
+        <h3 data-en="Publish New Notice" data-hi="नई सूचना प्रकाशित करें">
+            Publish New Notice
+        </h3>
+
+        <form method="POST" action="{{ url_for('add_notice') }}">
+
+            <div class="mb-3">
+                <label class="form-label" data-en="Notice Title" data-hi="सूचना का शीर्षक">
+                    Notice Title
+                </label>
+                <input type="text" name="title" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" data-en="Description" data-hi="विवरण">
+                    Description
+                </label>
+                <textarea name="description" class="form-control" rows="4" required></textarea>
+            </div>
+
+            <button class="btn btn-success" type="submit"
+                    data-en="Publish Notice" data-hi="सूचना प्रकाशित करें">
+                Publish Notice
+            </button>
+
+        </form>
+    </div>
+
+    <h3 data-en="Manage Notices" data-hi="सूचनाएं प्रबंधित करें">Manage Notices</h3>
+
+    <div class="table-responsive mb-5">
+        <table class="table table-bordered table-hover bg-white">
+            <thead class="table-success">
+                <tr>
+                    <th>ID</th>
+                    <th data-en="Title" data-hi="शीर्षक">Title</th>
+                    <th data-en="Date" data-hi="तारीख">Date</th>
+                    <th data-en="Action" data-hi="कार्यवाही">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for notice in notices %}
+                <tr>
+                    <td>{{ notice.id }}</td>
+                    <td>{{ notice.title }}</td>
+                    <td>{{ notice.date }}</td>
+                    <td>
+                        <form method="POST"
+                              action="{{ url_for('delete_notice', notice_id=notice.id) }}"
+                              onsubmit="return confirm('Delete this notice?')">
+                            <button class="btn btn-danger btn-sm" type="submit"
+                                    data-en="Delete" data-hi="हटाएं">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4" data-en="No notices available."
+                        data-hi="कोई सूचना उपलब्ध नहीं है।">
+                        No notices available.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <h3 data-en="Citizen Complaints" data-hi="नागरिक शिकायतें">Citizen Complaints</h3>
+
+    <div class="table-responsive mb-5">
+        <table class="table table-bordered table-hover bg-white">
+            <thead class="table-success">
+                <tr>
+                    <th>ID</th>
+                    <th data-en="Name" data-hi="नाम">Name</th>
+                    <th data-en="Phone" data-hi="फोन">Phone</th>
+                    <th data-en="Subject" data-hi="विषय">Subject</th>
+                    <th data-en="Message" data-hi="संदेश">Message</th>
+                    <th data-en="Date" data-hi="तारीख">Date</th>
+                    <th data-en="Status" data-hi="स्थिति">Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for item in complaints %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.phone }}</td>
+                    <td>{{ item.subject }}</td>
+                    <td>{{ item.message }}</td>
+                    <td>{{ item.date }}</td>
+                    <td>
+                        <form method="POST"
+                              action="{{ url_for('update_complaint', complaint_id=item.id) }}">
+                            <select name="status" class="form-select form-select-sm"
+                                    onchange="this.form.submit()">
+                                <option value="Pending" {% if item.status =='Pending' %}selected{% endif %}>
+                                    Pending
+                                </option>
+                                <option value="In Progress" {% if item.status =='In Progress' %}selected{% endif %}>
+                                    In Progress
+                                </option>
+                                <option value="Resolved" {% if item.status =='Resolved' %}selected{% endif %}>
+                                    Resolved
+                                </option>
+                            </select>
+                        </form>
+                    </td>
+                </tr>
+                {% else %}
+                <tr><td colspan="7">No complaints available.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <h3 data-en="Contact Messages" data-hi="संपर्क संदेश">Contact Messages</h3>
+
+    <div class="table-responsive">
+        <table class="table table-bordered bg-white">
+            <thead class="table-success">
+                <tr>
+                    <th data-en="Name" data-hi="नाम">Name</th>
+                    <th data-en="Email" data-hi="ईमेल">Email</th>
+                    <th data-en="Message" data-hi="संदेश">Message</th>
+                    <th data-en="Date" data-hi="तारीख">Date</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for item in messages %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.email }}</td>
+                    <td>{{ item.message }}</td>
+                    <td>{{ item.date }}</td>
+                </tr>
+                {% else %}
+                <tr><td colspan="4">No messages available.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</section>
+
+{% endblock %}

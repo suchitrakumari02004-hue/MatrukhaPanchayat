@@ -1,0 +1,65 @@
+
+{% extends "base.html" %}
+{% block title %}Services | Matrukha{% endblock %}
+
+{% block content %}
+
+<section class="page-banner">
+    <div class="container">
+        <h1 data-en="Citizen Services" data-hi="नागरिक सेवाएं">Citizen Services</h1>
+        <p data-en="Information about important public services"
+           data-hi="महत्वपूर्ण सार्वजनिक सेवाओं की जानकारी">
+            Information about important public services
+        </p>
+    </div>
+</section>
+
+<section class="container py-5">
+    <div class="row g-4">
+
+        {% set items = [
+            ("bi-file-earmark-medical", "Birth Certificate", "जन्म प्रमाण पत्र", "Information about birth registration and certificates.", "जन्म पंजीकरण और प्रमाण पत्र की जानकारी।"),
+            ("bi-file-earmark-x", "Death Certificate", "मृत्यु प्रमाण पत्र", "Information about death registration.", "मृत्यु पंजीकरण की जानकारी।"),
+            ("bi-house", "Housing Schemes", "आवास योजनाएं", "Information about rural housing schemes.", "ग्रामीण आवास योजनाओं की जानकारी।"),
+            ("bi-person-heart", "Old Age Pension", "वृद्धावस्था पेंशन", "Information about pension schemes.", "पेंशन योजनाओं की जानकारी।"),
+            ("bi-basket", "Ration Card", "राशन कार्ड", "Information about ration cards.", "राशन कार्ड की जानकारी।"),
+            ("bi-droplet", "Water & Sanitation", "जल एवं स्वच्छता", "Information about drinking water and sanitation.", "पेयजल और स्वच्छता की जानकारी।"),
+            ("bi-signpost-2", "Road Development", "सड़क विकास", "Information about village roads.", "गांव की सड़कों की जानकारी।"),
+            ("bi-briefcase", "Employment Schemes", "रोजगार योजनाएं", "Information about rural employment programmes.", "ग्रामीण रोजगार कार्यक्रमों की जानकारी।")
+        ] %}
+
+        {% for icon, en, hi, desc_en, desc_hi in items %}
+        <div class="col-md-4">
+            <div class="service-card">
+                <i class="bi {{ icon }}"></i>
+                <h4 data-en="{{ en }}" data-hi="{{ hi }}">{{ en }}</h4>
+                <p data-en="{{ desc_en }}" data-hi="{{ desc_hi }}">{{ desc_en }}</p>
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="col-md-4">
+            <div class="service-card">
+                <i class="bi bi-chat-square-text"></i>
+                <h4 data-en="Public Grievances" data-hi="जन शिकायतें">Public Grievances</h4>
+                <p data-en="Submit your complaint online."
+                   data-hi="अपनी शिकायत ऑनलाइन दर्ज करें।">
+                    Submit your complaint online.
+                </p>
+                <a href="{{ url_for('complaint') }}"
+                   data-en="Submit Here →" data-hi="यहां दर्ज करें →">
+                    Submit Here →
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="alert alert-info mt-5"
+         data-en="Important: Actual eligibility and application procedures must be confirmed with the relevant government authority."
+         data-hi="महत्वपूर्ण: वास्तविक पात्रता और आवेदन प्रक्रिया संबंधित सरकारी अधिकारी से सत्यापित करें।">
+        Important: Verify actual eligibility with the relevant authority.
+    </div>
+</section>
+
+{% endblock %}
